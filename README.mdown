@@ -1,0 +1,32 @@
+Install monit
+=============
+* sudo apt-get install monit
+
+Make it run on boot
+===================
+* sudo vim /etc/default/monit
+* change "startup=0" to "startup=1"
+
+Configure monit
+===============
+* Copy over the sample monitrc file (Dropbox/Quodis/Resources/Server Stuff/monitrc_sample_config) to /etc/monit/monitrc
+* Remember to change all instances of YOURSERVER.com to the correct server address!
+* Also remember to set a username & password for the web server. Search for "allow admin:monit" and change it. This is VERY IMPORTANT!
+
+Make sure mysql.pid is there
+============================
+* If this file is not present on your system, edit your mysql configuration in /etc/mysql/my.cnf. Under "basic settings" set pid-file = /var/run/mysqld/mysqld.pid
+* Restart mysql using /etc/init.d/mysql restart ( or service mysql restart )
+
+Configure iptables to accept connections from port 2812
+=======================================================
+* iptables -A INPUT -p tcp --dport 2812 -j ACCEPT
+
+Start monitoring!
+=================
+* /etc/init.d/monit start
+* View current status using "sudo monit status" or by accessing "YOURSERVER.com:2812"
+
+Helpful resources
+=================
+* http://www.darkcoding.net/software/setting-up-monit-on-ubuntu/
