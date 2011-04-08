@@ -1,6 +1,10 @@
-Install monit
-=============
+Install monit from the package manager
+=====================================
 * sudo apt-get install monit
+
+Or install it from source
+=========================
+* Available at http://mmonit.com/monit/download/
 
 Make it run on boot
 ===================
@@ -9,7 +13,7 @@ Make it run on boot
 
 Configure monit
 ===============
-* Copy over the sample monitrc file (Dropbox/Quodis/Resources/Server Stuff/monitrc_sample_config) to /etc/monit/monitrc
+* Clone the sample config file from git: git clone git://github.com/quodis/Monit-Deployment.git into /etc/monit
 * Remember to change all instances of YOURSERVER.com to the correct server address!
 * Also remember to set a username & password for the web server. Search for "allow admin:monit" and change it. This is VERY IMPORTANT!
 
