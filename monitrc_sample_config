@@ -179,7 +179,19 @@ set logfile syslog facility log_daemon
 #    if 3 restarts within 5 cycles then timeout
 #    depends on apache_bin
 #    group server
-#    
+#
+#
+# Nginx
+#
+# check process nginx with pidfile /var/run/nginx.pid
+# group www
+# start program = “/etc/init.d/nginx start”
+# stop program = “/etc/init.d/nginx stop”
+# if children > 250 then restart
+# if loadavg(5min) greater than 10 for 8 cycles then stop
+# if 3 restarts within 5 cycles then timeout#
+#
+# MySQL    
     check process mysqld with pidfile /var/run/mysqld/mysqld.pid
      start program = "/etc/init.d/mysql start"
 	 stop program = "/etc/init.d/mysql stop"
